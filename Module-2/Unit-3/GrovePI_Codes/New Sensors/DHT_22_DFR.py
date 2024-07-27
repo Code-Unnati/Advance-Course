@@ -1,5 +1,6 @@
 #pip3 install adafruit-circuitpython-dht
-#sudo apt-get install libgpiod2
+#sudo apt install gpiod
+## Can check installed library using  apt show libgpiod2
 import time
 import adafruit_dht
 import board
