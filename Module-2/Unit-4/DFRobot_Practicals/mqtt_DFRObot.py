@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import time
 import atexit
 
-led = 12
+LED = 12
 
 atexit.register(GPIO.cleanup)
 GPIO.setmode(GPIO.BCM)
@@ -15,7 +15,7 @@ GPIO.setup(LED,GPIO.OUT)
 def on_connect(client, userdata, flags, rc):
     print("Connected to broker. Return of connection: "+str(rc))
 
-    client.subscribe("/MQTTLED/#")
+    client.subscribe("MQTTLED")
 
 # Callback - when a message is received
 def on_message(client, userdata, msg):
@@ -36,7 +36,7 @@ client = mqtt.Client()
 client.on_connect = on_connect   # configure callback (from when the connection$
 client.on_message = on_message   # set callback (from when a message is receive$
 
-client.connect("test.mosquitto.org", 1883, 60)
+client.connect("broker.emqx.io", 1883, 60)
 
 # Endless loop waiting to receive messages. .
 client.loop_forever()

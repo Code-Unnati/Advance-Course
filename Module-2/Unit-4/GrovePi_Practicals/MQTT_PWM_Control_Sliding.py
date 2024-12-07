@@ -43,7 +43,8 @@ client.on_connect = on_connect   # configure callback (from when the connection$
 client.on_message = on_message   # set callback (from when a message is receive$
 client.on_publish = on_publish
 client.on_subscribe = on_subscribe
-client.connect("test.mosquitto.org", 1883, 60)
+#client.connect("test.mosquitto.org", 1883, 60)
+client.connect("broker.emqx.io", 1883, 60)
 
 rc = 0
 while rc == 0:

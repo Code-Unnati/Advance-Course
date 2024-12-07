@@ -14,6 +14,7 @@ while board.begin() != board.STA_OK:
     print("board begin faild")
     time.sleep(2)
 print("board begin success")
+board.set_adc_enable()
 board.set_pwm_enable()  
 board.set_pwm_frequency(1000)      
 LED = 12
@@ -36,17 +37,17 @@ def on_message(client, userdata, msg):
         df=int(df)
 #        df3=df.decode()
 
-        if (df == 100):
-          board.set_pwm_duty(0,df)
-          return 0
+#        if (df == 100):
+#          board.set_pwm_duty(0,df)
+#          return 0
 
-        if (df == 50):
-          board.set_pwm_duty(0,df)
-          return 0
+#        if (df == 50):
+#          board.set_pwm_duty(0,df)
+#          return 0
         
-        if (df == 10):
-          board.set_pwm_duty(0,df)
-          return 0
+#        if (df == 10):
+        board.set_pwm_duty(0,df)
+        return 0
 
 
 def on_publish(client, userdata, mid):
@@ -63,7 +64,7 @@ client.on_connect = on_connect   # configure callback (from when the connection$
 client.on_message = on_message   # set callback (from when a message is receive$
 client.on_publish = on_publish
 client.on_subscribe = on_subscribe
-client.connect("test.mosquitto.org", 1883, 60)
+client.connect("broker.emqx.io", 1883, 60)
 
 rc = 0
 while rc == 0:

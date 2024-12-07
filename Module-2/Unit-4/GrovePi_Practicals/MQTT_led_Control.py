@@ -27,7 +27,8 @@ client = mqtt.Client()
 client.on_connect = on_connect   # configure callback (from when the connection$
 client.on_message = on_message   # set callback (from when a message is receive$
 
-client.connect("test.mosquitto.org", 1883, 60)
+#client.connect("test.mosquitto.org", 1883, 60)
+client.connect("broker.emqx.io", 1883, 60)
 
 # Endless loop waiting to receive messages. .
 client.loop_forever()
