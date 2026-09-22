@@ -1,1 +1,0 @@
-The project requires execution on Kaggle Cloud or Google Colab due to the computationally intensive nature of deep learning. Training the model locally would demand significant time and resources, making cloud-based platforms a more efficient choice.
